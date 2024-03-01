@@ -91,13 +91,14 @@ class DomjudgeScraper(base.Scraper):
                     penalty = int(m.group('penalty') or '0')
                     attempts = int(m.group('attempts'))
                     pendings = int(m.group('pendings') or '0')
-                classes = problem_elem['class']
                 solved = len(problem_elem.select('.score_correct')) > 0
+                isFirst = len(problem_elem.select('.score_first')) > 0
                 team_problems.append({
                     'attempts': attempts,
                     'pendings': pendings,
                     'penalty': penalty,
                     'solved': solved,
+                    'isFirst': isFirst,
                 })
             rank = team_elem.select('.scorepl')[0].get_text().strip()
             if rank:

@@ -150,14 +150,14 @@ function TeamScoreCol({ solved, penalty, problemSpecs }) {
 }
 
 function TeamProblemCol({
-  problem: { attempts, penalty, pendings, solved },
+  problem: { attempts, penalty, pendings, solved, isFirst },
   problemSpec: { label },
   revealMode,
 }) {
   let status;
   let content;
   if (solved) {
-    status = 'solved';
+    status = isFirst ? 'solved-first' : 'solved';
     const hour = Math.floor(penalty / 60 / 60);
     const minute = Math.floor(penalty / 60) % 60;
     const second = Math.floor(penalty) % 60;
